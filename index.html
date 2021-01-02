@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/Azulmedia.css" type="text/css" />
+<title>Mockthis</title>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo">Mock<span class="gray">this</span></h1>
+    <h2 id="slogan">A unit testing framework for mocking objects in Java</h2>
+    
+  </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Wise Words</h1>
+      <p>&quot;Code is like humor. When you have to explain it, it's bad.&quot;</p>
+      <p class="align-right">- Cory House</p>
+      <h1>We welcome contribution!</h1>
+      <p>If you are interested in this framework and would like to contribute, you are welcome to add a feature or fix a bug. <a href="https://github.com/Hirak2018/mockthis1">repo link</a> </p>
+    </div>
+    <div id="main"> <a name="TemplateInfo"></a>
+      <div class="box">
+        <h1>Mockthis <span class="gray">Intro</span></h1>
+        <p><strong>Mockthis</strong> is an opensource framework for Java unit testing. Its purpose is to provide a lightweight utility for mocking object behavior. Easily compatible with other frameworks and different Java versions(>1.5). This work is distributed under the Apache License 2.0</p>
+        <p>Good luck and I hope you find this tool useful!</p>
+		<p> To download <a href="Downloads/mockthis.jar">Click Here</a></p>
+      </div>
+      <a name="SampleTags"></a>
+      <div class="box">
+        <h1>Steps with a sample program<span class="gray"></span></h1>
+		<p>This is a javaagent based framework , so you have to add the downloaded mockthis.jar to the program argument. (either in program argument of IDE or in command line)</p>
+		<p><code>
+		-javaagent:path\to\jar\mockthis.jar
+		</code>
+        <h3>Code</h3>
+		<p> Lets say we have a source class named Example. And we want to mock the greetings() method. </p>
+        <p><code> public class Example {</br>
+				&nbsp; public String greetings(){</br>
+					&nbsp;&nbsp; return "Merry Christmas!";</br>
+				&nbsp;}</br>
+		}</br></code></p>
+		<p>
+		</br>In our test class we need to annotate an instance(could remain as unused instance in the test) of Example class with <strong> @Mockthis</strong>. And the 
+		annotation parameter "method" holds the method to be mocked. The returned object is defined within the static block with AhamockHolder.obj. We can pass any object that is 
+		in compliance the the return type of the method to be mocked.</p>
+		<p><code>
+		public class ExampleTest {</br>
+		&nbsp; @Mockthis(method = "greetings")</br>
+		&nbsp; Example example;</br>
+		</br>
+		&nbsp; static {</br>
+			&nbsp;&nbsp;  AhamockHolder.obj = "Hello Coder!";</br>
+		&nbsp;  }</br>
+		</br>
+		&nbsp;  @Test</br>
+		&nbsp; public void test_my_framework() {</br>
+			&nbsp;&nbsp;    Example example = new Example();</br>
+			&nbsp;&nbsp;    System.out.println(example.greetings());</br>
+			&nbsp;&nbsp;     Assert.assertEquals("Hello Coder!", example.greetings());</br>
+		&nbsp;  }</br>
+		&nbsp;}</br>
+		</code></p>
+       <p> Test passes and outputs to</p>
+	   <code>
+	   Hello Coder!
+	   </code>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
+<div id="footer-wrap">
+  <div class="footer-left">
+    <p class="align-left"> &copy; 2021 <strong>Hirak Jyoti</strong> |  <a href="https://twitter.com/Hirak36323651">twitter</a> |  <a href="https://github.com/Hirak2018">github</a> | <a href="https://www.linkedin.com/in/hirak-jyoti-chakraborty-47713311a/">LinkedIn</a> </p>
+  </div>
+</div>
+</body>
+</html>
